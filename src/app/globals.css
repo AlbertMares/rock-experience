@@ -48,10 +48,38 @@ a {
   }
 }
 
+.experience-card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .experience-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
+.experience-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.experience-image {
+  width: 100%;
+  height: auto;       /* mantiene proporción */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.experience-card:hover .experience-image {
+  transform: scale(1.05); /* efecto zoom al pasar el mouse */
+}
+
+.card-body {
+  background: #fff;
+  padding: 1rem;
+}
+
 
 .slide-fade-out {
   opacity: 0;
@@ -71,3 +99,110 @@ a {
     transform: translateY(0);
   }
 }
+
+.hero-section {
+  min-height: 100vh; /* ocupa toda la pantalla */
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 80vh;
+  }
+
+  .hero-video {
+    object-position: top;
+  }
+
+  .hero-content {
+    margin-top: -50px; /* menos desplazamiento en móvil */
+  }
+}
+.bg-gradient {
+  background: linear-gradient(135deg, #ff6f61, #ff9a76, #ffd166);
+  color: #fff;
+}
+
+h1, h2 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.experience-card {
+  background: #111; /* contraste con fondo negro */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.experience-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #333;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, #ff6f61, #ff9a76, #ffd166);
+  color: #fff;
+}
+
+#contacto h2, #contacto h4 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+#contacto .form-control {
+  border-radius: 8px;
+  border: none;
+  padding: 0.75rem 1rem;
+}
+
+#contacto .btn {
+  background-color: #fff;
+  color: #ff6f61;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#contacto .btn:hover {
+  background-color: #ffd166;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+

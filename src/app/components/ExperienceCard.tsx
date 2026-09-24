@@ -1,35 +1,24 @@
 "use client";
 
-import Image from "next/image";
 import { Card } from "react-bootstrap";
 
 interface ExperienceProps {
+  id: number;
   title: string;
-  category: string;
   description: string;
   image: string;
 }
 
-export default function ExperienceCard({ title, category, description, image }: ExperienceProps) {
+export default function ExperienceCard({ title, description, image }: ExperienceProps) {
   return (
-    <Card
-      className="h-100 shadow-sm border-0 rounded-3 overflow-hidden experience-card"
-      style={{ transition: "transform 0.3s ease, box-shadow 0.3s ease" }}
-    >
-      <div className="position-relative">
-        <Image
-          src={image}
+    <Card className="experience-card h-100 shadow-sm">
+      <div className="experience-image-wrapper">
+        <Card.Img
+          variant="top"
+          src={image || "https://picsum.photos/600/400?random=2"}
           alt={title}
-          width={600}
-          height={400}
-          className="card-img-top"
+          className="experience-image"
         />
-        <span
-          className="badge bg-primary position-absolute top-0 start-0 m-2"
-          style={{ fontSize: "0.8rem" }}
-        >
-          {category}
-        </span>
       </div>
       <Card.Body>
         <Card.Title className="fw-bold">{title}</Card.Title>

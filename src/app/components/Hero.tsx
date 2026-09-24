@@ -1,42 +1,67 @@
 "use client";
 
-import Image from "next/image";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="py-5 text-light"
-      style={{
-        background: "linear-gradient(135deg, #0d6efd 0%, #6610f2 100%)",
-      }}
+      className="text-light position-relative overflow-hidden d-flex align-items-end"
+      style={{ minHeight: "100vh" }}
     >
-      <Container>
-        <Row className="align-items-center">
-          <Col md={6} className="mb-4 mb-md-0">
-            <h1 className="fw-bold">Vive algo diferente.</h1>
-            <p className="lead">
-              Descubre experiencias creadas para conectar marcas, tecnología y personas.
-            </p>
-            <div className="d-flex flex-wrap gap-2">
-              <Button variant="light" href="#experiencias">
+      {/* Video de fondo */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+      >
+        <source src="/videos/hero.webm" type="video/webm" />
+      </video>
+
+      {/* Overlay para contraste */}
+      <div
+        className="position-absolute top-0 start-0 w-100 h-100"
+        style={{ background: "rgba(0,0,0,0.4)" }}
+      ></div>
+
+      <Container className="position-relative pb-5">
+        <Row>
+          <Col md={8} lg={6}>
+            <motion.h1
+              className="fw-bold display-4 display-md-3 display-lg-2 mb-3"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Vive algo diferente.
+            </motion.h1>
+
+            <motion.p
+              className="lead fs-5 fs-md-4 mb-4"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
+              Descubre experiencias creadas para conectar marcas, tecnología y
+              personas.
+            </motion.p>
+
+            <motion.div
+              className="d-flex flex-wrap gap-2"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              <Button variant="light" size="lg" href="#experiencias">
                 Explorar experiencias
               </Button>
-              <Button variant="outline-light" href="#contacto">
+              <Button variant="outline-light" size="lg" href="#contacto">
                 Quiero participar
               </Button>
-            </div>
-          </Col>
-          <Col md={6} className="text-center">
-            <Image
-              src="/hero.jpg"
-              alt="Rock Experience"
-              width={600}
-              height={400}
-              className="rounded shadow-lg"
-              priority
-            />
+            </motion.div>
           </Col>
         </Row>
       </Container>

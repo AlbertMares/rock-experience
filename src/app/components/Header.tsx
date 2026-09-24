@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
 export default function Header() {
   return (
-    <Navbar bg="light" expand="lg" className="mb-4">
+    <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="#inicio">ROCK EXPERIENCE</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
