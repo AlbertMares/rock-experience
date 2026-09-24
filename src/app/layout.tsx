@@ -13,7 +13,7 @@ const geistSans = Geist({
 
 // SEO Y METADATA
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rock-experience.vercel.app"), //URL test {{Cambiar}}
+  metadataBase: new URL("https://rock-experience-final.vercel.app"), 
 
   title: "ROCK EXPERIENCE",
   description:
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ROCK EXPERIENCE",
     description: "Vive algo diferente.",
-    url: "https://rock-experience.vercel.app", //URL test {{Cambiar}}
+    url: "https://rock-experience-final.vercel.app", 
     siteName: "ROCK EXPERIENCE",
     images: [
       {
