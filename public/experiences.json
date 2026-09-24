@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Gaming Experience",
+    "category": "Gaming",
+    "description": "Una experiencia interactiva pensada para conectar marcas con nuevas audiencias.",
+    "image": "https://picsum.photos/600/400?random=1"
+  },
+  {
+    "id": 2,
+    "title": "Music Sessions",
+    "category": "Entertainment",
+    "description": "Contenido, música y tecnología unidos en una experiencia digital.",
+    "image": "https://picsum.photos/600/400?random=2"
+  },
+  {
+    "id": 3,
+    "title": "Creator Lab",
+    "category": "Creators",
+    "description": "Un espacio pensado para creadores, influencers y comunidades.",
+    "image": "https://picsum.photos/600/400?random=3"
+  },
+  {
+    "id": 4,
+    "title": "AI Experience",
+    "category": "Technology",
+    "description": "Experiencias impulsadas por inteligencia artificial.",
+    "image": "https://picsum.photos/600/400?random=4"
+  },
+  {
+    "id": 5,
+    "title": "Live Experience",
+    "category": "Events",
+    "description": "Activaciones digitales y presenciales conectadas en tiempo real.",
+    "image": "https://picsum.photos/600/400?random=5"
+  },
+  {
+    "id": 6,
+    "title": "Digital Commerce",
+    "category": "Commerce",
+    "description": "Experiencias digitales enfocadas en conversión y generación de leads.",
+    "image": "https://picsum.photos/600/400?random=6"
+  }
+]
