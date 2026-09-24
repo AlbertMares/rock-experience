@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
-import Swal from "sweetalert2";
+import { Form, Button, Alert, Container } from "react-bootstrap";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -13,7 +12,10 @@ export default function ContactForm() {
     message: "",
     privacy: false,
   });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -34,67 +36,71 @@ export default function ContactForm() {
     e.preventDefault();
     const err = validate();
     if (err) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: err,
-      });
+      setError(err);
+      setSuccess("");
     } else {
-      setSubmitted(true);
-      Swal.fire({
-        icon: "success",
-        title: "¡Gracias!",
-        text: "Recibimos tus datos correctamente.",
-        confirmButtonColor: "#0d6efd",
-      });
+      setError("");
+      setSuccess("Gracias. recibimos tus datos correctamente.");
+      setClosing(true);
+      setTimeout(() => setSubmitted(true), 700); // espera animación
     }
   };
 
-  if (submitted) {
-    return null; // oculta el formulario después de enviar
-  }
-
   return (
-    <section id="contacto" className="py-5 bg-dark text-light">
+    <section
+      id="contacto"
+      className="py-5 text-light"
+      style={{
+        background: "linear-gradient(135deg, #ff6f61 0%, #ffcc70 100%)",
+      }}
+    >
       <Container>
-        <h2 className="mb-4 text-center">Quiero participar</h2>
-        <Form
-          onSubmit={handleSubmit}
-          className="p-4 rounded bg-light text-dark shadow"
-          style={{ maxWidth: "600px", margin: "0 auto" }}
-        >
-          <Form.Group className="mb-3">
-            <Form.Label>Nombre</Form.Label>
-            <Form.Control name="name" onChange={handleChange} required />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Correo electrónico</Form.Label>
-            <Form.Control type="email" name="email" onChange={handleChange} required />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Teléfono</Form.Label>
-            <Form.Control name="phone" onChange={handleChange} required />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Empresa</Form.Label>
-            <Form.Control name="company" onChange={handleChange} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Mensaje</Form.Label>
-            <Form.Control as="textarea" rows={4} name="message" onChange={handleChange} required />
-          </Form.Group>
-          <Form.Check
-            type="checkbox"
-            label="Acepto el aviso de privacidad"
-            name="privacy"
-            onChange={handleChange}
-            required
-            className="mb-3"
-          />
-          <Button type="submit" variant="primary" className="w-100">
-            Enviar
-          </Button>
-        </Form>
+        <h2 className="mb-4 text-center fw-bold">Quiero participar</h2>
+
+        {!submitted ? (
+          <Form
+            onSubmit={handleSubmit}
+            className={`p-4 rounded bg-light text-dark shadow-lg ${closing ? "slide-fade-out" : ""}`}
+            style={{ maxWidth: "600px", margin: "0 auto" }}
+          >
+            <Form.Group className="mb-3">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control name="name" onChange={handleChange} required />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Correo electrónico</Form.Label>
+              <Form.Control type="email" name="email" onChange={handleChange} required />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Teléfono</Form.Label>
+              <Form.Control name="phone" onChange={handleChange} required />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Empresa</Form.Label>
+              <Form.Control name="company" onChange={handleChange} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Mensaje</Form.Label>
+              <Form.Control as="textarea" rows={4} name="message" onChange={handleChange} required />
+            </Form.Group>
+            <Form.Check
+              type="checkbox"
+              label="Acepto el aviso de privacidad"
+              name="privacy"
+              onChange={handleChange}
+              required
+              className="mb-3"
+            />
+            <Button type="submit" variant="dark" className="w-100 fw-bold py-2">
+              Enviar
+            </Button>
+            {error && <Alert variant="danger" className="mt-3 text-center">{error}</Alert>}
+          </Form>
+        ) : (
+          <Alert variant="success" className="p-4 text-center fw-bold shadow-lg slide-fade-in" style={{ maxWidth: "600px", margin: "0 auto" }}>
+            {success}
+          </Alert>
+        )}
       </Container>
     </section>
   );
