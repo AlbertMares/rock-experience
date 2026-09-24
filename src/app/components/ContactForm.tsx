@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Form, Button, Alert, Container } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -12,8 +13,7 @@ export default function ContactForm() {
     message: "",
     privacy: false,
   });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -33,12 +33,26 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const err = validate();
-    if (err) setError(err);
-    else {
-      setError("");
-      setSuccess("Gracias. recibimos tus datos correctamente.");
+    if (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err,
+      });
+    } else {
+      setSubmitted(true);
+      Swal.fire({
+        icon: "success",
+        title: "¡Gracias!",
+        text: "Recibimos tus datos correctamente.",
+        confirmButtonColor: "#0d6efd",
+      });
     }
   };
+
+  if (submitted) {
+    return null; // oculta el formulario después de enviar
+  }
 
   return (
     <section id="contacto" className="py-5 bg-dark text-light">
@@ -80,8 +94,6 @@ export default function ContactForm() {
           <Button type="submit" variant="primary" className="w-100">
             Enviar
           </Button>
-          {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-          {success && <Alert variant="success" className="mt-3">{success}</Alert>}
         </Form>
       </Container>
     </section>
