@@ -49,35 +49,19 @@ a {
 }
 
 .experience-card {
-  border-radius: 10px;
-  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experience-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.experience-image-wrapper {
-  width: 100%;
-  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 .experience-image {
   width: 100%;
-  height: auto;       /* mantiene proporción */
+  height: auto;
   display: block;
-  transition: transform 0.4s ease;
-}
-
-.experience-card:hover .experience-image {
-  transform: scale(1.05); /* efecto zoom al pasar el mouse */
-}
-
-.card-body {
-  background: #fff;
-  padding: 1rem;
+  border-bottom: 1px solid #333;
 }
 
 

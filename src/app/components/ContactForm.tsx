@@ -60,8 +60,8 @@ export default function ContactForm() {
         {!submitted ? (
           <Form
             onSubmit={handleSubmit}
-            className={`p-4 rounded bg-light text-dark shadow-lg ${closing ? "slide-fade-out" : ""}`}
-            style={{ maxWidth: "600px", margin: "0 auto" }}
+            className={`p-4 rounded text-dark shadow-lg ${closing ? "slide-fade-out" : ""}`}
+            style={{ maxWidth: "25rem", maxHeight: "100%", margin: "0 auto" }}
           >
             <Form.Group className="mb-3">
               <Form.Label>Nombre</Form.Label>
